@@ -1,0 +1,173 @@
+This lesson is being piloted (Beta version)
+ Toggle navigation     [The_CMS_logo] Home
+    * Code_of_Conduct
+    * Setup
+    * Episodes
+          o Introduction
+          o The_CMS_detector
+          o Egamma_objects
+          o The_Particle_Flow_algorithm_and_reconstruction_of_other_objects
+          o All_in_one_page_(Beta)
+    * Extras
+          o Reference
+          o About
+          o Discussion
+          o Figures
+          o Instructor_Notes
+    * License
+    * Improve_this_page
+[                    ]
+****** Introduction_to_Physics_Objects_in_CMS ******
+****** Introduction ******
+     ***** Overview *****
+     Teaching: 5 min
+     Exercises: 0 min
+     Questions
+         * What are known as physics object in CMS?
+         * What will I need to do in this lesson?
+     Objectives
+         * Understand what physics objects are
+         * Understand the dynamics of this reading assignment
+***** Overview *****
+The CMS is a giant detector that acts like a camera that “photographs” particle
+collisions, allowing us to interpret their nature.
+Certainly we cannot directly observe all the particles created in the
+collisions because some of them decay very quickly or simply do not interact
+with our detector. However, we can infer their presence. If they decay to other
+stable particles and interact with the apparatus, they leave signals in the CMS
+subdetectors. These signals are used to reconstruct the decay products or infer
+their presence; we call these, physics objects. These objects could be
+electrons, muons, jets, missing energy, etc.; but also lower level objects like
+tracks. For the current releases of open data, we store them in ROOT files
+following the EDM data model in AOD format.
+In the CERN_Open_Portal(CODP) site one can find a more detailed description of
+these physical objects and a list of them corresponding to 2010 and 2011/2012
+releases of open data.
+***** What is expected in this lesson? *****
+In this lesson we will guide you through reading some documentation, which will
+give you a better idea about the physics objects in CMS. As you progress with
+the next episodes, you will find a set of simple questions that need to be
+answered in the corresponding questionary in our assignment_form. The question
+numbers in the form match the numbers in this lesson. You can edit this form at
+any time.
+     ***** Key Points *****
+         * Basic information about physics objects in CMS can be found in
+           the Cern Open Data portal site. A set of questions need to be
+           answered in our assignment_form.
+===============================================================================
+****** The CMS detector ******
+     ***** Overview *****
+     Teaching: 20 min
+     Exercises: 0 min
+     Questions
+         * What are the main components of the CMS detector?
+     Objectives
+         * Learn the very basic principles of CMS subdetectors and the
+           technologies they use for sensing particles.
+***** Subdetectors and their technologies *****
+Physics objects are built with the information collected from the sensors of
+the CMS detector. Take a look at the CMS experiment in the image below. In this
+video you will get a quick feeling of how it looked back in 2018, the last year
+of data taking in Run 2.
+[https://cms-docdb.cern.ch/cgi-bin/PublicDocDB/
+RetrieveFile?docid=11514&amp;version=1&amp;filename=cms_120918_03.png]
+Please read this short description of the CMS experiment and answer the
+questions below in our assignment_form. Do not be afraid of exploring the
+details of each subdetector in the dedicated links that appear therein. They
+are very short.
+Question #1: What is the heaviest component of the CMS Experiment?
+Question #2: Where can muon tracks be measured in the CMS detector?
+Question #3: According to this CMS detector summary, around how many crystals
+can be found in the barrel section of the ECAL subdetector?
+     ***** Key Points *****
+         * The CMS detector is a complex machine with multiple subsystems
+           and technologies dedicated to identify/build physics objects.
+===============================================================================
+****** Egamma objects ******
+     ***** Overview *****
+     Teaching: 15 min
+     Exercises: 0 min
+     Questions
+         * What are the key aspects in the building of electromagnetic
+           physics objects?
+     Objectives
+         * Learn the basic notion of egamma (electron and photons) object
+           reconstruction.
+***** Finding electrons and photons with the CMS detector *****
+In this recent_article you can learn about the most basic ideas of electrons
+and photons reconstruction. It refers mostly to the Run 2 epoch, but worry not
+because the essential aspects were also true for Run 1 and the open data from
+that epoch. Read this article and answer the following question in our
+assignment_form.
+This is an example of the many objects reconstructed in CMS. In the next
+episode you will dig a bit deeper into the main reconstruction algorithm used
+in this experiment.
+Question #4: What is known as an electromagnetic shower in CMS?
+     ***** Key Points *****
+         * Egamma physics objects are built using information from the
+           tracking system as well as the ECAL subdetector. It is a vivid
+           example of physics objects reconstruction.
+===============================================================================
+****** The Particle Flow algorithm and reconstruction of other objects ******
+     ***** Overview *****
+     Teaching: 20 min
+     Exercises: 0 min
+     Questions
+         * What is the particle flow algorithm?
+         * What are the key aspects to remember about how PF works?
+         * How can PF can be used to build physics objects?
+     Objectives
+         * Learn the basic aspects of the PF algorithm.
+         * Get the ide of how physics objects are built using the PF
+           algorithm
+***** Overview *****
+In the last episode, you learned about how electromagnetic objects are
+reconstructed using methods like clustering and linking of tracks with ECAL
+energy deposits. These actions are essential parts of the so-called Particle
+Flow (PF) algorithm.
+[../fig/pflow.png]
+The particle-flow algorithm aims at reconstructing and identifying all stable
+particles in the event, i.e., electrons, muons, photons, charged hadrons and
+neutral hadrons, with a thorough combination of all CMS sub-detectors towards
+an optimal determination of their direction, energy and type. This list of
+individual particles is then used, as if it came from a Monte-Carlo event
+generator, to build jets (from which the quark and gluon energies and
+directions are inferred), to determine the missing transverse energy (which
+gives an estimate of the direction and energy of the neutrinos and other
+invisible particles), to reconstruct and identify taus from their decay
+products and more.
+***** Clustering, blocking and linking *****
+To dig deeper into the logic of the main tasks needed in a PF algorithm for
+reconstruction, please read these_slides from one of our CMS colleages. Answer
+the questions below in our assignment_form.
+Question #5: What does the energy of a clustering seed in the calorimeters need
+to be?
+Question #6: What are blocks?
+***** Particles and corrections *****
+At this point you must have a pretty good picture of how the different physics
+objects (and their final incarnation as particles) are made.
+For instance, in the image below, where egamma (electrons and photons) objects
+(in red and blue), inner tracks (black) and muon chambers tracks (also called
+standalone in green) are depicted, one can infer the possibility (particle
+hypothesis) of building global muons.
+[../fig/muons.png]
+Note that the global muon on the left might not be isolated (there is a lot of
+track activity around), while the one on the right does seem to be an isolated
+one (of course, muons can also leave energy in the calorimeters). Following a
+jet clustering algorithm, the bulk of activity on the left could be identified
+as a jet. Most algorithms in CMS use PF objects.
+Finally, these physics objects may need corrections. Check out these example
+for ECAL cell calibrations needed for all ECAL clusters:
+[../fig/clustercalib.png]
+As it was mentioned in the beginning, a list of physics object can be found in
+this guide from the CODP. There, one can also find extended references.
+     ***** Key Points *****
+         * The PF algorithm aims at reconstructing and identifying all
+           stable particles in the event, which can be later used to build
+           other physics objects.
+===============================================================================
+
+Content licensed under CC-BY_4.0 2020–2021 by The_CMS_Collaboration
+Lesson setup licensed under CC-BY_4.0 2018–2021 by The_Carpentries
+                        Edit_on_GitHub / Contributing / Source / Cite / Contact
+                  Using The_Carpentries_style version 9.5.3.
