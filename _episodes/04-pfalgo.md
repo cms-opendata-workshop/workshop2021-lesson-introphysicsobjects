@@ -8,7 +8,7 @@ questions:
 - "How can PF can be used to build physics objects?"
 objectives:
 - Learn the basic aspects of the PF algorithm.
-- Get the ide of how physics objects are built using the PF algorithm
+- Get an idea of how physics objects are built using the PF algorithm
 keypoints:
 - The PF algorithm aims at reconstructing and identifying all stable particles in the event, which can be later used to build other physics objects.
 ---
@@ -20,14 +20,14 @@ In the last episode, you learned about how electromagnetic objects are reconstru
 
 <img src="../fig/pflow.png" width="600">
 
-The particle-flow algorithm aims at reconstructing and identifying all stable particles in the event, i.e., electrons, muons, photons, charged hadrons and neutral hadrons, with a thorough combination of all CMS sub-detectors towards an optimal determination of their direction, energy and type. This list of individual particles is then used, as if it came from a Monte-Carlo event generator, to build jets (from which the quark and gluon energies and directions are inferred), to determine the missing transverse energy (which gives an estimate of the direction and energy of the neutrinos and other invisible particles), to reconstruct and identify taus from their decay products and more. 
+The particle-flow algorithm aims at reconstructing and identifying all stable particles in the event, i.e., electrons, muons, photons, charged hadrons and neutral hadrons, with a thorough combination of all CMS sub-detectors towards an optimal determination of their direction, energy and type. This list of individual particles is then used, as if it came from a Monte-Carlo event generator, to build jets (from which the quark and gluon energies and directions are inferred), to determine the missing transverse energy (which gives an estimate of the direction and energy of the neutrinos and other invisible particles), to reconstruct and identify taus from their decay products and more.
 
 ## Clustering, blocking and linking
 
 To dig deeper into the logic of the main tasks needed in a PF algorithm for reconstruction, please read [these slides](../files/Askew_Clustering_Block.pdf) from one of our CMS colleages.  Answer the questions below in our [assignment form](https://forms.gle/sMyuLFiYJWRsUAew6).
 
 **Question #5**:
-What does the energy of a clustering seed in the calorimeters need to be? 
+What does the energy of a clustering seed in the calorimeters need to be?
 
 **Question #6**:
 What are blocks?
@@ -41,16 +41,16 @@ The image below shows a cartoon of several possible blocks. ECAL clusters are sh
 <img src="../fig/muons.png" width="600">
 
 
-Note that the global muon on the left might not be isolated (there is a lot of track activity around), while the one on the right does seem to be an isolated one (of course, muons can also leave energy in the calorimeters). But the best particle hypothesis where muon tracks appear is "muon"! Any clusters or tracks linked to these standalone muons can now be removed from their respective blocks as global muon objects. 
+Note that the global muon on the left might not be isolated (there is a lot of track activity around), while the one on the right does seem to be an isolated one (of course, muons can also leave energy in the calorimeters). But the best particle hypothesis where muon tracks appear is "muon"! Any clusters or tracks linked to these standalone muons can now be removed from their respective blocks as global muon objects.
 
 The remaining block elements are sorted into particle hypotheses in the following order:
- * Isolated electrons are constructed from any ECAL clusters linked only to an inner track. 
- * Isolated photons are constructed from any ECAL clusters not linked to a track. Only very low-energy linked HCAL clusters are allowed in an isolated photon. 
+ * Isolated electrons are constructed from any ECAL clusters linked only to an inner track.
+ * Isolated photons are constructed from any ECAL clusters not linked to a track. Only very low-energy linked HCAL clusters are allowed in an isolated photon.
  * Non-isolated photons are constructed from any other ECAL clusters without track links.
  * Neutral hadrons are constructed from any HCAL clusters withour track links
- * Charged hadrons make up everything that's left! Each track remaining in the block is assigned as a single charged hadron object. 
+ * Charged hadrons make up everything that's left! Each track remaining in the block is assigned as a single charged hadron object.
 
-So each cluster and track in each block is sorted into a single particle hypothesis. At each step, decisions have to be made about how to assign the new particle an energy and direction. CMS generally relies on inner tracks for momentum and direction measurements for the charged particles, and relies on calorimeter clusters for the energies of electrons, photons, and hadrons. These cluster energies need calibration, like this example for ECAL clusters: 
+So each cluster and track in each block is sorted into a single particle hypothesis. At each step, decisions have to be made about how to assign the new particle an energy and direction. CMS generally relies on inner tracks for momentum and direction measurements for the charged particles, and relies on calorimeter clusters for the energies of electrons, photons, and hadrons. These cluster energies need calibration, like this example for ECAL clusters:
 
 <img src="../fig/clustercalib.png" width="600">
 
